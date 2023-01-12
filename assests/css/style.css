@@ -1,0 +1,44 @@
+:root{
+    color:red;
+    font-weight: 600;
+}
+
+.nav{
+    margin-bottom: 5vh;
+}
+
+.city-search{
+
+}
+
+.card-header{
+
+}
+
+#cityinput{
+
+}
+
+.searchbtn{
+
+}
+
+#forecast{
+
+}
+
+#day-forecast{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+
+}
+
+.city-list{
+
+}
+
+#cities{
+
+}

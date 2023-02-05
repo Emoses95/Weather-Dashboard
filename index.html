@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="./css/style.css">
+   <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
         <h2>Today's Weather</h2>
     </header>
     <main>
-        <aside class="city-search">
+        <section class="city-search">
             <h3 class="card-header">Search for City</h3>
             <input type="text" id="cityinput">
             <button type="submit" class="searchbtn">City</button>
@@ -24,10 +24,13 @@
                     <li></li>
                     <li></li>
                 </ul>
-            </aside>
+            </section>
            
             <section class="day-forecast">
                 <h2>City(mm/dd/yyyy)</h2>
+                <p>temp: <span class="temp"></span></p>
+                <p>humidity  <span class="humidity"></span></p>
+                <p>wind <span class="wind"></span></p>
                 <h3>5-Day Forecast:</h3>
             </section>
             
@@ -47,6 +50,6 @@
 
 
     </main>
-    <script src="./script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

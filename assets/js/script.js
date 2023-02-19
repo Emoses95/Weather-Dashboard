@@ -7,6 +7,7 @@ function searchButtonHandler(){
     // get searchbar content
 var targetCity = getCityInputText()
 console.log(targetCity);
+getForecast(targetCity);
 }
 // gets user input value as a string
 function getCityInputText(){
@@ -17,6 +18,18 @@ return cityInput.value
 function getForecastRequestUrl(cityName) {
     const url= `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`;
     return url;
+}
+function getForecast(cityName){
+   const url= getForecastRequestUrl(cityName);
+   console.log(url)
+   console.log(fetch(url));
+
+   let fetchPromise= fetch(url);
+   fetchPromise.then(res =>{
+    return res.json()
+   }).then(json=>{
+    console.log(json)
+   })
 }
 
 

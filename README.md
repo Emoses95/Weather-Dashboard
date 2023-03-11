@@ -25,3 +25,4 @@ WHEN the user clicks on a city in the search history
 THEN they're again presented with current and future conditions for a city
 
 ## Screenshot
+<image src="Screenshot 2023-03-10 at 6.32.41 PM Small.png">

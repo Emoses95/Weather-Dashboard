@@ -1,52 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Weather Dashboard</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <title>Weather Dashboard</title>
+      </head>
+      
 <body>
     <header class="nav">
         <h1> Weather</h1>
         <h2>Today's Weather</h2>
     </header>
-    <main>
-        <section class="city-search">
-            <h3 class="card-header">Search for City</h3>
-            <input type="text" id="cityinput">
-            <button type="submit" class="searchbtn">City</button>
-                <ul id="forecast">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </section>
-           
-            <section class="day-forecast">
-                <h2>City(mm/dd/yyyy)</h2>
-                <p>temp: <span class="temp"></span></p>
-                <p>humidity  <span class="humidity"></span></p>
-                <p>wind <span class="wind"></span></p>
-                <h3>5-Day Forecast:</h3>
-            </section>
-            
-            <section class="city-list">
-            <ul id="cities">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-
-        </section>
+    <main id="container">
+        <aside class="search-bar">
+            <label for="city-input">City Search</label>
+            <input type="text" id="city" placeholder="city"/>
+            <button type="search" class="btn">Search</button>
+            <div id="city-button"></div>
+        </aside>
+        <article>
+            <h2>Weather Results <span id="city-title"></span></h2>
+            <div id="weather-container"></div>
+        </article>
+     
 
 
     </main>

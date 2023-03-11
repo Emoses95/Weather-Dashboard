@@ -1,8 +1,10 @@
 var btn = document.querySelector('.btn');
 var cityField = document.querySelector('#city');
 var cityTitle = document.querySelector('#city-title');
-var weatherCards = document.querySelector('#weather-containers');
+var weatherCards = document.querySelector('#weather-container');
 var cityButton = document.querySelector('#city-button');
+var searchBtn = document.querySelector("#search")
+
 
 function generateButtonNames() {
     dataNames = localStorage.getItem('buttonNames')
@@ -15,20 +17,20 @@ function generateButtonNames() {
 
 var generateNames = generateButtonNames();
 
-function getWeatherApi(lat, lon, generateNewBtn) {
-    var weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon${lon}&appid=91f70ee705cc15ae38e8e5bf4ba00fb0&units=imperial`;
+function getWeatherApi(cityName, generateNewBtn) {
+    var weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=91f70ee705cc15ae38e8e5bf4ba00fb0&units=imperial`;
     console.log(weatherUrl)
     fetch(weatherUrl)
         .then(function (response) {
             return response.json();
         }).then(function (data) {
-            RTCEncodedAudioFrame(data, generateNewBtn)
+            renderInfo(data, generateNewBtn)
         })
 }
 
 function renderInfo(data, generateNewBtn) {
     weatherCards.innerHTML = '';
-    for (leti = 0; i < 40; i += 9) {
+    for (let i = 0; i < 40; i += 9) {
         var newWeatherCard = document.createElement('section');
         var date = document.createElement('h4');
         var weatherIcon = document.createElement('h4');
@@ -72,7 +74,7 @@ function createButton(btnName, saveBtnNames) {
     cityBtn.classList.add("ctyBtn");
     cityButtons.appendChild(cityBtn);
     cityBtn.addEventListener("click", function () {
-        getMapApi(this.innerHTML, false);
+        // getMapApi(this.innerHTML, false);
     });
     if (saveBtnNames) {
 
@@ -81,23 +83,33 @@ function createButton(btnName, saveBtnNames) {
 
 
 function getMapApi(cityName, newBtn) {
-    var mapUrl = `https://www.mapquestapi.com/geocoding/v1/address?key=478f90251fdefe4662977362541510d4&location=${cityName}`
-    console.log(mapUrl)
-    fetch(mapUrl)
-        .then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            console.log(data.results[0].locations[0])
-            var lat = data.results[0].locations[0].latLng.lat
-            var lon = data.results[0].locations[0].latLng.lng
-            getWeatherApi(lat, lon, newBtn)
-        })
+    // var mapUrl = `https://www.mapquestapi.com/geocoding/v1/address?key=478f90251fdefe4662977362541510d4&location=${cityName}`
+    // console.log(mapUrl)
+    // fetch(mapUrl)
+    //     .then(function (response) {
+    //         return response.json();
+    //     }).then(function (data) {
+    //         console.log(data.results[0].locations[0])
+    //         var lat = data.results[0].locations[0].latLng.lat
+    //         var lon = data.results[0].locations[0].latLng.lng
+    //         getWeatherApi(lat, lon, newBtn)
+    //     })
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=478f90251fdefe4662977362541510d4`).then(data => {
+        data.json()
+            .then(output => {
+                generateWeatherApi(cityName, newBtn)
+            })
+    })
 }
 
 
-btn.addEventListener("click", function () {
+
+
+
+searchBtn.addEventListener("click", function () {
     event.preventDefault();
-    getMapApi(cityField.value, true)
+    // getMapApi(cityField.value, true)
+    getWeatherApi(cityField.value, generateButtonNames)
     cityField.value = ""
 })
 
